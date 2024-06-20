@@ -1,27 +1,21 @@
-prompt(
-  "Please enter a list of comma-separated froyo flavors:",
-  "vanilla, vanilla, vanilla, strawberry, coffee, coffee"
+const usersOrder = prompt(
+  "Please enter your desired flavors, separated by commas",
+  "vanilla,vanilla,vanilla,strawberry,strawberry,coffee,coffee"
 );
 
-const froyoFlavors = {
-  vanilla: 3,
-  strawberry: 1,
-  coffee: 2,
-};
+console.log(usersOrder);
 
-for(const key in froyoFlavors) {
-    console.log(key)
-};
+const ordersArr = usersOrder.split(",");
+console.log(ordersArr);
 
-for(const key in froyoFlavors) {
-    console.log(froyoFlavors[key])
+const ordersCondensed = {};
+
+for (let i = 0; i < ordersArr.length; i++) {
+  if (ordersCondensed[ordersArr[i]]) {
+    ordersCondensed[ordersArr[i]] += 1;
+  } else {
+    ordersCondensed[ordersArr[i]] = 1;
+  }
 }
 
-console.log(Object.keys(froyoFlavors));
-console.log(Object.values(froyoFlavors));
-
-for(let i = 0; i < froyoFlavors.length; i++) {
-  console.log(froyoFlavors(i));
-}
-
-console.table(froyoFlavors)
+console.table(ordersCondensed);
